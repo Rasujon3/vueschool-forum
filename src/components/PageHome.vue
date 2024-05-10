@@ -9,7 +9,7 @@
     </div>
 </template>
 
-<script>
+<!-- <script>
 import sourceData from '@/data.json';
 console.log('sourceData',sourceData.users);
 export default {
@@ -29,6 +29,21 @@ export default {
     }
   }
 }
+</script> -->
+<script setup>
+import sourceData from '@/data.json';
+import { ref} from 'vue';
+
+const threads = ref(sourceData.threads);
+const posts = ref(sourceData.posts);
+const users = ref(sourceData.users);
+
+function postById (postId) {
+        return posts.value.find(p => p.id === postId)
+    }
+function userById (userId) {
+        return users.value.find(u => u.id === userId)
+    }
 </script>
 
 <style scoped>
