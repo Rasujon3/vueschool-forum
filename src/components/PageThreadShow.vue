@@ -1,10 +1,6 @@
 <template>
-    <h1>Welcome to the Fourm</h1>
-    <ThreadList :threads="threads" />
-        <!-- style start -->
-        <!-- <div v-for="thread in threads" 
-        :key="thread.id" 
-        class="col-large push-top">
+    <!-- style start -->
+    <div class="col-large push-top">
         <h1>{{ thread.title }}</h1>
         <div class="post-list">
             <div class="post" v-for="postId in thread.posts" :key="postId">
@@ -28,7 +24,7 @@
             </div>
         </div>
 
-    </div> -->
+    </div>
     <!-- style end -->
     <!-- <div>Hello from page home</div>
     <div v-for="thread in threads" :key="thread.id">
@@ -41,18 +37,35 @@
 </template>
 
 <script>
-import ThreadList from '@/components/ThreadList.vue'
 import sourceData from '@/data.json';
 // console.log('sourceData',sourceData.users);
 export default {
-    components: {
-        ThreadList
+    props: {
+        id: {
+            required: true,
+            type: String
+        }
     },
     data () {
     return {
       threads: sourceData.threads,
+      posts: sourceData.posts,
+      users: sourceData.users
     }
   },
+  computed: {
+    thread () {
+        return this.threads.find(t => t.id === this.id)
+    }
+  },
+  methods: {
+    postById (postId) {
+        return this.posts.find(p => p.id === postId)
+    },
+    userById (userId) {
+        return this.users.find(u => u.id === userId)
+    }
+  }
 }
 </script>
 <!-- <script setup>
