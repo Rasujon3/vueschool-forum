@@ -29,7 +29,7 @@
     </div>
 </template> 
 
-<script>
+<!-- <script>
 import sourceData from '@/data.json';
 // console.log('sourceData',sourceData.users);
 export default {
@@ -54,7 +54,39 @@ export default {
     }
   }
 }
+</script> -->
+<script setup>
+import sourceData from '@/data.json';
+import { reactive, defineProps } from 'vue';
+// console.log('sourceData',sourceData.users);
+// const posts = reactive(sourceData.posts);
+const users = reactive(sourceData.users);
+
+defineProps({
+    threads: {
+            type: Array,
+            required: true
+        }
+})
+
+// function postById (postId) {
+//         return posts.find(p => p.id === postId)
+//     }
+function userById (userId) {
+        return users.find(u => u.id === userId)
+    }
 </script>
+
+<!-- <script>
+export default {
+    props: {
+        threads: {
+            type: Array,
+            required: true
+        }
+    }
+}
+</script> -->
 
 <style scoped>
 
