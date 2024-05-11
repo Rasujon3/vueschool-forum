@@ -5,7 +5,7 @@
             <div v-for="thread in threads" :key="thread.id" class="thread">
                 <div>
                     <p>
-                        <a href="thread.html">{{ thread.title }}</a>
+                        <router-link :to="{name: 'ThreadShow', params: {id: thread.id}}">{{ thread.title }}</router-link>
                     </p>
                     <p class="text-faded text-xsmall">
                         By <a href="#">{{ userById(thread.userId).name }}</a>, {{ thread.publishedAt }}
@@ -29,7 +29,7 @@
     </div>
 </template> 
 
-<!-- <script>
+<script>
 import sourceData from '@/data.json';
 // console.log('sourceData',sourceData.users);
 export default {
@@ -54,28 +54,28 @@ export default {
     }
   }
 }
-</script> -->
-<script setup>
+</script>
+<!-- <script setup>
 import sourceData from '@/data.json';
 import { reactive, defineProps } from 'vue';
 // console.log('sourceData',sourceData.users);
 // const posts = reactive(sourceData.posts);
-const users = reactive(sourceData.users);
+const users = reactive(sourceData.users); -->
 
-defineProps({
+<!-- defineProps({
     threads: {
             type: Array,
             required: true
         }
-})
+}) -->
 
-// function postById (postId) {
+<!-- // function postById (postId) {
 //         return posts.find(p => p.id === postId)
-//     }
-function userById (userId) {
+//     } -->
+<!-- function userById (userId) {
         return users.find(u => u.id === userId)
-    }
-</script>
+    } -->
+<!-- </script> -->
 
 <!-- <script>
 export default {
